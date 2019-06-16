@@ -10,12 +10,14 @@ function App(){
       <div className="Login">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Search" component={Search}/>
+          <Route path="/login" component={Login} />
+          <Route path="/search" component={Search}/>
         </Switch>
       </div>
       </Router>
     )
+
+
 }
   const Home = () => (
     <div>
