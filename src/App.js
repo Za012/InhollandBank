@@ -9,11 +9,13 @@ function App(){
       <div className="Login">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Login" component={Login} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
       </Router>
     )
+
+
 }
   const Home = () => (
     <div>

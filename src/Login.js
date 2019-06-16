@@ -1,82 +1,80 @@
 import React, { Component } from 'react'
-import './App.css'
+import './Login.css'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
+import AuthService from './AuthService';
 import { Link } from 'react-router-dom';
 
 class Login extends Component {
-  constructor () {
-    super()
-    this.state = {
-      username: '',
-      password: ''
+    constructor(){
+        super();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.Auth = new AuthService();
     }
-    this.handleClick = this.handleClick.bind(this)
-  }
 
-  handleChange (event) {
-    this.setState( {[event.target.name]: event.target.value} )
-  }
-
-  handleClick (e) {
-    e.preventDefault();
-    console.log('Success!')
-    this.username = this.state.username;
-    this.password = this.state.password;
-
-    axios.post('https://localhost:8443/Login?username='+this.username+'&'+'password='+this.password,
-    {
-      headers: { 
-       "Access-Control-Allow-Origin": "*",
-       "Access-Control-Allow-Methods": "DELETE, POST, GET",
-       "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-     }
-   })
-    .then(function(response){
-      console.log(response);
-      const cookies = new Cookies(); 
-      var data = response.data;
-      data.token = "bearer "+data.token;
-      cookies.set('token', data, { path: '/' });
-      console.log(data); 
-      axios.get('https://localhost:8443/me',
-      {
-        headers:{
-         "Authorization": cookies.get('token').token,
-         'Accept' : 'application/json',
-         'Content-Type': 'application/json'
-       }
-     });
-
-    })
-    .catch(err => {
-        console.log(err);
-        return err;
-      });
-  }
-
-  retrieveRoles(cookies){
-
-  }
-
-  render () {
-    return (
-      <div className='login_container'>
-        <h2>Login to your account</h2>
-        <form id="login_window" className="login_form" name="login" onSubmit={this.handleClick}>
-          <input type="text" id="username" title="username"  name="username" 
-          onChange={event => this.handleChange(event)} placeholder="username" />
-          <input type="password" id="password" title="username" name="password" 
-          onChange={event => this.handleChange(event)}  placeholder="password" />
-          <button type="submit" className="login" name="login">Login</button>
-        </form>
-      </div>
-      /*<div className='button__container'>
-      <button className='button' onClick={this.handleClick}>
-      Click Me
-      </button>
-      </div>*/
-      )
-  }
+    componentWillMount(){
+    if(this.Auth.loggedIn()){
+        if(this.Auth.state.cookies.get('user').roles.indexOf("ROLE_EMPLOYEE") > -1){
+          this.props.history.replace('/Employee');
+        }
+        else{
+          this.props.history.replace('/Customer');
+        }
+    }
 }
-export default Login
+
+
+    render() {
+        return (
+            <div className="center">
+                <div className="card">
+                    <h1>Login</h1>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <input
+                            className="form-item"
+                            placeholder="Username goes here..."
+                            name="username"
+                            type="text"
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            className="form-item"
+                            placeholder="Password goes here..."
+                            name="password"
+                            type="password"
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            className="form-submit"
+                            value="SUBMIT"
+                            type="submit"
+                        />
+                    </form>
+                </div>
+            </div>
+        );
+    }
+
+    handleChange(e){
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+    }
+
+    handleFormSubmit(e){
+        e.preventDefault();
+      
+        this.Auth.login(this.state.username,this.state.password)
+            .then(res =>{
+               this.props.history.replace('/');
+            })
+            .catch(err =>{
+                alert(err);
+            })
+    }
+}
+
+export default Login;
