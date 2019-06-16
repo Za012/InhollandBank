@@ -31,7 +31,7 @@ class Search extends Component {
 		axios.get(url,
 		{
 			headers:{
-				"Authorization": cookies.get('token').token,
+				"Authorization":"Bearer "+ cookies.get('token'),
 				'Accept' : 'application/json',
 				'Content-Type': 'application/json'
 			}

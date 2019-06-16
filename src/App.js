@@ -2,6 +2,7 @@
 import React from 'react';
 import Login from './Login';
 import Search from './Search';
+import RegisterUser from './RegisterUser';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App(){
@@ -10,14 +11,13 @@ function App(){
       <div className="Login">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/search" component={Search}/>
+          <Route path="/Login" component={Login} />
+          <Route path="/Employee/Search" component={Search}/>
+          <Route path="/Employee/RegisterUser"component={RegisterUser}/>
         </Switch>
       </div>
       </Router>
     )
-
-
 }
   const Home = () => (
     <div>
