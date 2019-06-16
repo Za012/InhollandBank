@@ -36,7 +36,7 @@ class Login extends Component {
       console.log(response);
       const cookies = new Cookies(); 
       var data = response.data;
-      data.token = "bearer "+data.token;
+      data.token = "Bearer "+data.token;
       cookies.set('token', data, { path: '/' });
       console.log(data); 
       axios.get('https://localhost:8443/me',

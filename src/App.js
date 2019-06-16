@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Login from './Login';
+import Search from './Search';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App(){
@@ -10,6 +11,7 @@ function App(){
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/Login" component={Login} />
+          <Route path="/Search" component={Search}/>
         </Switch>
       </div>
       </Router>
