@@ -70,12 +70,6 @@ class Login extends Component {
         this.Auth.login(this.state.username,this.state.password)
             .then(res =>{
               this.props.history.replace('/Employee/Search');
-              //  if(cookies.get('user').roles.indexOf("ROLE_EMPLOYEE") > -1){
-              //   this.props.history.replace('/Employee/Search');
-              // }
-              // else{
-              //   this.props.history.replace('/Customer');
-              // }
             })
             .catch(err =>{
                 alert(err);

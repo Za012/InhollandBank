@@ -3,6 +3,8 @@ import './App.css'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import ReactTable from 'react-table';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import RegisterUser from './RegisterUser';
 
 class Search extends Component {
 	constructor () {
@@ -42,6 +44,10 @@ class Search extends Component {
 			console.log(response.data);
 		})
 		;
+	}
+
+	redirect(){
+		this.props.history.replace('/Employee/RegisterUser')
 	}
 
 

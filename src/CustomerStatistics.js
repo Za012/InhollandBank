@@ -64,14 +64,11 @@ class CustomerStatistics extends Component {
     		['2017', 1030, 540, 350,1030, 540, 350],
     		]}
 		options={{
-    // Material design options
 		    chart: {
-		    	title: 'Company Performance',
+		    	title: 'Your Life',
 		    	subtitle: 'Sales, Expenses, and Profit: 2014-2017',
 		    },
 		}}
-		  // For tests
-	  rootProps={{ 'data-testid': '2' }}
 	  />
 		  <form id="search_window" className="search_form" name="search" onSubmit={this.handleClick}>
 		      <input type="text" id="query" title="query"  name="query" 
