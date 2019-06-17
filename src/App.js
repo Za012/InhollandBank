@@ -3,6 +3,7 @@ import React from 'react';
 import Login from './Login';
 import Search from './Search';
 import RegisterUser from './RegisterUser';
+import Profile from './components/Profile';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App(){
@@ -14,6 +15,7 @@ function App(){
           <Route path="/Login" component={Login} />
           <Route path="/Employee/Search" component={Search}/>
           <Route path="/Employee/RegisterUser"component={RegisterUser}/>
+          <Route path="/profile" component={Profile}/>
         </Switch>
       </div>
       </Router>
