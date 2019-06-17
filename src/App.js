@@ -2,6 +2,7 @@
 import React from 'react';
 import Login from './Login';
 import Search from './Search';
+import CustomerStatistics from './CustomerStatistics';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App(){
@@ -11,7 +12,8 @@ function App(){
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/search" component={Search}/>
+          <Route path="/Employee/Search" component={Search}/>
+          <Route path="/Customer/Statistics" component={CustomerStatistics}/>
         </Switch>
       </div>
       </Router>

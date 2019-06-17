@@ -16,7 +16,7 @@ class Login extends Component {
     componentWillMount(){
     if(this.Auth.loggedIn()){
         if(this.Auth.state.cookies.get('user').roles.indexOf("ROLE_EMPLOYEE") > -1){
-          this.props.history.replace('/Employee');
+          this.props.history.replace('/Employee/Search');
         }
         else{
           this.props.history.replace('/Customer');
@@ -66,10 +66,16 @@ class Login extends Component {
 
     handleFormSubmit(e){
         e.preventDefault();
-      
+        //const cookies = new Cookies();
         this.Auth.login(this.state.username,this.state.password)
             .then(res =>{
-               this.props.history.replace('/');
+              this.props.history.replace('/Employee/Search');
+              //  if(cookies.get('user').roles.indexOf("ROLE_EMPLOYEE") > -1){
+              //   this.props.history.replace('/Employee/Search');
+              // }
+              // else{
+              //   this.props.history.replace('/Customer');
+              // }
             })
             .catch(err =>{
                 alert(err);
