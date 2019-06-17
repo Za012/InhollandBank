@@ -25,10 +25,10 @@ export default class AuthService {
             //     password
             // })
         }).then(res => {
-         console.log(res.token);
+           console.log(res.token);
            this.setToken(res.token)// Setting the token in cookie
-           this.setUserRoles();
-           return Promise.resolve(res);
+           var roles = this.setUserRoles();
+           return Promise.resolve(res, roles);
        })
     }
 
@@ -37,7 +37,7 @@ export default class AuthService {
         this.fetch(`${this.domain}/me`)
         .then(function(response){
             parent.state.cookies.set('user', response, { path: '/' });
-            console.log(parent.state.cookies.get('user'));
+            return response.roles;
         });
     }
 
