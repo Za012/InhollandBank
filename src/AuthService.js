@@ -2,7 +2,6 @@ import decode from 'jwt-decode';
 import Cookies from 'universal-cookie';
 
 export default class AuthService {
-    // Initializing important variables
 
     constructor(domain) {
         this.domain = 'https://localhost:8443' // API server domain
@@ -20,10 +19,6 @@ export default class AuthService {
         // Get a token from api server using the fetch api
         return this.fetch(`${this.domain}/Login?username=${username}&password=${password}`, {
             method: 'POST'
-            // body: JSON.stringify({
-            //     username,
-            //     password
-            // })
         }).then(res => {
            console.log(res.token);
            this.setToken(res.token)// Setting the token in cookie
@@ -44,7 +39,7 @@ export default class AuthService {
     loggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.state.cookies.get('token') // Getting token from cookie
-        return !!token && !this.isTokenExpired(token) // handwaiving here
+        return !!token && !this.isTokenExpired(token) 
     }
 
     isTokenExpired(token) {
@@ -63,20 +58,16 @@ export default class AuthService {
 
     setToken(idToken) {
         // Saves user token to cookie
-        //localStorage.setItem('id_token', idToken)
-       // var data = "Bearer "+idToken;
        this.state.cookies.set('token', idToken, { path: '/' });
    }
 
    getToken() {
-        // Retrieves the user token from localStorage
+        // Retrieves the user token from cookies
         return this.state.cookies.get('token') 
-        //return localStorage.getItem('id_token')
     }
 
     logout() {
-        // Clear user token and profile data from localStorage
-        //localStorage.removeItem('id_token');
+        // Clear user token and profile data from cookies
         this.state.cookies.remove('token');
     }
 

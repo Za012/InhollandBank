@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './App.css'
-import '../service/AccountService'
+import '../App.css'
 import Cookies from 'universal-cookie';
 import ReactTable from 'react-table';
+import axios from 'axios'
 
 class Profile extends Component {
 	constructor () {
@@ -10,23 +10,37 @@ class Profile extends Component {
 		this.state = {
 			accounts: []
 		}
-		this.handleClick = this.handleClick.bind(this)
 	}
 
     
     componentDidMount() {
-        AccountService.executeAccountService()
+    	const cookies = new Cookies();
+    	axios.get(`https://localhost:8443/Employee/Accounts`,
+		{
+			headers:{
+				"Authorization":"Bearer "+ cookies.get('token'),
+				'Accept' : 'application/json',
+				'Content-Type': 'application/json'
+			}
+		})
         .then(response => this.setState({ accounts: response.data }))
-        .catch(this.setState({ accounts: 'Error Processing Request' }))
+        .catch(this.setState({ accounts: 'Error Processing Request' }));
+
     }
     
 
 	render () {
+		const columns = [
+		{
+			Header: "Balance",
+			accessor: "balance"	
+		}
+		]
     return (
       <div className='profile_container'>
 		  <ReactTable
 		  	columns ={columns}
-		  	data={this.state.data}
+		  	data={this.state.accounts}
 		  >
 		  </ReactTable>
       </div>
