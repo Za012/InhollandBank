@@ -23,10 +23,17 @@ const styles = {
     '-moz-border-radius' : "8px",
     '-webkit-border-radius' : "8px"
   },
-  Title:{
+  Title:{ 
     position : "absolute",
-  	top: "220px"
-  }
+    left : "5%",
+    top : "220px",
+  	color: "#F90B6D", 
+  	'font-family': "Open Sans, sans-serif",
+  	'font-size': "34px", 
+  	'font-weight': "300",
+  	'line-height': "40px",
+  	margin:"0 0 16px"
+   }
 };
 
 class RegisterUser extends Component {
@@ -77,7 +84,7 @@ class RegisterUser extends Component {
 	  <TopBar/>
 	  <MiddleBar/>
 	  <NavBar/>
-	  <h2 style={styles.Title}>Create a user!</h2>
+	  <h2 style={styles.Title}>Register a user</h2>
       <Form style={styles.Form} onSubmit={this.handleClick}>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridRole">

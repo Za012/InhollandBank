@@ -17,16 +17,16 @@ export default class TopBar extends PureComponent {
   render() {
     return (
       <div>
-      <Nav fill variant="tabs" defaultActiveKey="/home" style={styles.Nav}>
+      <Nav fill variant="tabs" defaultActiveKey="/Employee/RegisterUser" style={styles.Nav}>
         <Nav.Item>
-          <Nav.Link href="/home">Register</Nav.Link>
+          <Nav.Link href="/Employee/RegisterUser">Register User</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1">Search</Nav.Link>
+          <Nav.Link href="/Employee/Search">Search</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-          Disabled
+          <Nav.Link href="/Employee/RegisterAccount" disabled>
+          Register Account
           </Nav.Link>
         </Nav.Item>
       </Nav>

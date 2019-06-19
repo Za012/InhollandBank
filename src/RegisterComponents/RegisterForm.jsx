@@ -36,41 +36,41 @@ export default class TopBar extends Component {
 
           <Form.Group as={Col} controlId="formGridFirstName">
             <Form.Label>First name</Form.Label>
-            <Form.Control type="text" name="firstName" placeholder="Enter first name" />
+            <Form.Control type="text" name="firstName" placeholder="Enter first name" required />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridLastName">
             <Form.Label>First name</Form.Label>
-            <Form.Control type="text" name="lastName" placeholder="Enter last name" />
+            <Form.Control type="text" name="lastName" placeholder="Enter last name" required/>
           </Form.Group>
         </Form.Row>
 
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Control type="email" name="email" placeholder="Enter email"required />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPhone">
             <Form.Label>Phone</Form.Label>
-            <Form.Control type="phone" name="phone" placeholder="Enter phone number" />
+            <Form.Control type="phone" name="phone" placeholder="Enter phone number" required/>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridBirth">
             <Form.Label>Birthday</Form.Label>
-            <Form.Control type="date" name="birthday" placeholder="Enter birthday" />
+            <Form.Control type="date" name="birthday" placeholder="Enter birthday" required/>
           </Form.Group>
         </Form.Row>
 
         <Form.Row>
          <Form.Group as={Col} controlId="formGridUserame">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="text" name="username" placeholder="Enter username" />
+            <Form.Control type="text" name="username" placeholder="Enter username"required />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name="password" placeholder="Password" />
+            <Form.Control type="password" name="password" placeholder="Password" required/>
            </Form.Group>
         </Form.Row>
 
