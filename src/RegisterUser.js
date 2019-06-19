@@ -50,21 +50,64 @@ class RegisterUser extends Component {
 			dateCreated: null,
 			birthday: null
 		}
+		this.errorMessage = {
+			nameError: "",
+			birthdayError: "",
+			phoneError: "",
+			usernameError:"",
+			passwordError:"",
+		}
 		this.handleClick = this.handleClick.bind(this)
 	}
 
 	handleChange (event) {
 		this.setState( {[event.target.name]: event.target.value} )
 	}
+	validate(){
+		let validated = true;
+		this.errorMessage.phoneError = "";
+		this.errorMessage.usernameError = "";
+		this.errorMessage.passwordError = "";
 
+		var regex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g;
+		if(!regex.test(this.state.phone)){
+			this.errorMessage.phoneError = "Phone number is incorrect";
+			validated = false;
+		}
+		regex = /^[a-zA-Z0-9]+$/;
+		if(!regex.test(this.state.username)){
+			this.errorMessage.usernameError = "Username may NOT start/end with -._ or any other non alphanumeric character"
+			validated = false;
+		}
+		regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/g;
+		if(!regex.test(this.state.password)){
+			this.errorMessage.passwordError = "Password is required to have a minimum of eight characters, at least one letter and one number";
+			validated = false;
+		}
+		if(this.state.birthday == ""){
+			this.errorMessage.birthdayError = "Please enter a birthday";
+			validated = false;
+		}
+		if(this.state.firstName == "" && this.state.lastName == ""){
+			this.errorMessage.nameError = "Please enter your names";
+			validated = false;
+		}
+		console.log(this.errorMessage);
+		return validated;
+	}
 	handleClick (e) {
+		e.preventDefault();
+		if(!this.validate()){
+			e.stopPropagation();
+			return;
+		}
+
 		this.state.dateCreated = new Date().toLocaleString()
 		var parent = this;
 		var url = 'https://localhost:8443/Employee/Users';
 		if(this.state.query != null && this.state.value != null){
 			url += this.state.query+this.state.operator+this.state.value;
 		}
-		e.preventDefault();
       	const cookies = new Cookies(); 
 
       	fetch(url,{
@@ -85,7 +128,8 @@ class RegisterUser extends Component {
 	  <MiddleBar/>
 	  <NavBar/>
 	  <h2 style={styles.Title}>Register a user</h2>
-      <Form style={styles.Form} onSubmit={this.handleClick}>
+      <Form style={styles.Form} 
+      	onSubmit={this.handleClick}>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridRole">
             <Form.Label>Role</Form.Label>
@@ -98,12 +142,15 @@ class RegisterUser extends Component {
           <Form.Group as={Col} controlId="formGridFirstName">
             <Form.Label>First name</Form.Label>
             <Form.Control type="text" name="firstName" onChange={event => this.handleChange(event)} placeholder="Enter first name" />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid city.
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridLastName">
             <Form.Label>Last name</Form.Label>
             <Form.Control type="text" name="lastName" onChange={event => this.handleChange(event)} placeholder="Enter last name" />
-          </Form.Group>
+          </Form.Group>	
         </Form.Row>
 
         <Form.Row>
@@ -139,6 +186,17 @@ class RegisterUser extends Component {
           Submit
         </Button>
       </Form>
+<div>
+      <div style={{fontSize: 12, color: "red"}}>
+      	{this.errorMessage.passwordError}
+      </div>
+      <div style={{fontSize: 10000, color: "red"}}>
+      	{this.errorMessage.phoneError}
+      </div>
+      <div style={{fontSize: 12, color: "red"}}>
+      	{this.errorMessage.usernameError}
+      </div>
+</div>
       </div>
       )
   }
