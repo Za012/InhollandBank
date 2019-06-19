@@ -37,22 +37,50 @@ const styles = {
     'border-radius' : "9px",
     '-moz-border-radius' : "9px",
     '-webkit-border-radius' : "9px",
+    'border-color' : "white",
+    padding: "9px",
+
+  },
+    loggedButton: {
+    'font-size': "18px",
+    background : "#E3027E",
+    background : "rgba(227, 2, 126, 1)",
+    position : "absolute",
+    right : "2%",
+    top : "31px",
+    padding: "9px",
+    'min-width': "60px",
+    height : "47px",
+    'border-radius' : "9px",
+    '-moz-border-radius' : "9px",
+    '-webkit-border-radius' : "9px",
+        'border-color' : "white"
+
   },
 };
 
 export default class TopBar extends PureComponent {
+  constructor(){
+    super()
+    this.state = {
+      cookies : new Cookies()
+    }
+    this.state.cookies = new Cookies();
+  }
 
   loggedIn() {
-    const cookies = new Cookies();
+      //const cookies = new Cookies();
       // Checks if there is a saved token and it's still valid
-      const token = cookies.get('token') // Getting token from cookie
+      const token = this.state.cookies.get('token') // Getting token from cookie
+     // const user = this.state.cookies.get('user').username   
+
       if(!token && !this.isTokenExpired(token)){
           return(
-            <Button variant="secondary" style={styles.loginButton}>Login</Button>);
+            <Button variant="secondary" href="/Login" style={styles.loginButton}>Login</Button>);
       } 
-      else{
+      else {        
         return(
-        <Button variant="secondary" style={styles.loginButton}>Hello person</Button>);
+        <Button variant="secondary" href="/" style={styles.loggedButton}>Logout</Button>);
       }
   }
 

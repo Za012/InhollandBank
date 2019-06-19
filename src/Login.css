@@ -3,6 +3,10 @@
 .center{
     font-family: 'Raleway', sans-serif;
     background-color: pink;
+    background-image: url("./Resources/img/tulip1.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
     position: absolute;
     height: 100%;
     width: 100%;
@@ -14,7 +18,10 @@
 .card{
     background-color: #fff;
     border-radius: 15px;
-    padding: 0.8rem;
+    padding: 3%;
+-webkit-box-shadow: 0px 5px 16px 3px rgba(97,97,97,1);
+-moz-box-shadow: 0px 5px 16px 3px rgba(97,97,97,1);
+box-shadow: 0px 5px 16px 3px rgba(97,97,97,1);
 }
 
 .card > form{
@@ -25,7 +32,10 @@
 .card h1{
     text-align: center;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #E3027E;
+    text-shadow: none;
 }
 
 .form-item{
@@ -41,7 +51,7 @@
     font-family: 'Raleway', sans-serif;
     height: 35px;
     color: #fff;
-    background-color: hotpink;
+    background-color: #E3027E;
     border: none;
     letter-spacing: 0.2rem;
     transition: 0.3s opacity ease;

@@ -10,6 +10,7 @@ const styles = {
     top : "120px",
     width : "100%",
     height : "6px",
+    'color': "black"
   },
 };
 
@@ -17,7 +18,7 @@ export default class TopBar extends PureComponent {
   render() {
     return (
       <div>
-      <Nav fill variant="tabs" defaultActiveKey="/Employee/RegisterUser" style={styles.Nav}>
+      <Nav fill variant="tabs" defaultActiveKey="/Employee/Search" style={styles.Nav}>
         <Nav.Item>
           <Nav.Link href="/Employee/RegisterUser">Register User</Nav.Link>
         </Nav.Item>

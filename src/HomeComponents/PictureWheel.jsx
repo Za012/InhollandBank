@@ -13,7 +13,7 @@ const styles = {
     'padding-left' : "0px",
     'padding-top' : "5px",
     'padding-bottom' : "5px",
-    'margin-top' : "100px",
+    'margin-top' : "70px",
     width : "100%",
   },
   image:{

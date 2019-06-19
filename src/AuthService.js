@@ -12,7 +12,7 @@ export default class AuthService {
           cookies: new Cookies()
       }
 
-        const cookies = new Cookies(); 
+        this.state.cookies = new Cookies(); 
     }
 
     login(username, password) {
@@ -20,9 +20,9 @@ export default class AuthService {
         return this.fetch(`${this.domain}/Login?username=${username}&password=${password}`, {
             method: 'POST'
         }).then(res => {
-           console.log(res.token);
-           this.setToken(res.token)// Setting the token in cookie
            var roles = this.setUserRoles();
+           this.setToken(res.token)// Setting the token in cookie
+
            return Promise.resolve(res, roles);
        })
     }

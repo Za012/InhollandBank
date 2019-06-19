@@ -4,6 +4,9 @@ import axios from 'axios'
 import Cookies from 'universal-cookie';
 import AuthService from './AuthService';
 import { Link } from 'react-router-dom';
+import Tulip from './Resources/img/tulip.jpg';
+import TopBar from "./HomeComponents/TopBar";
+
 
 class Login extends Component {
     constructor(){
@@ -28,19 +31,20 @@ class Login extends Component {
     render() {
         return (
             <div className="center">
+              <TopBar/>
                 <div className="card">
                     <h1>Login</h1>
                     <form onSubmit={this.handleFormSubmit}>
                         <input
                             className="form-item"
-                            placeholder="Username goes here..."
+                            placeholder="Username"
                             name="username"
                             type="text"
                             onChange={this.handleChange}
                         />
                         <input
                             className="form-item"
-                            placeholder="Password goes here..."
+                            placeholder="Password"
                             name="password"
                             type="password"
                             onChange={this.handleChange}
@@ -65,8 +69,8 @@ class Login extends Component {
     }
 
     handleFormSubmit(e){
+        const cookies = new Cookies();
         e.preventDefault();
-        //const cookies = new Cookies();
         this.Auth.login(this.state.username,this.state.password)
             .then(res =>{
               this.props.history.replace('/Employee/Search');

@@ -14,16 +14,10 @@ const styles = {
   backCard1:{
     background : "#F2F2F2",
     background : "rgba(255, 255, 255, 1)",
-    'border-style' : "Solid",
-    'border-color' : "#B7B7B7",
-    'border-color' : "rgba(183, 183, 183, 1)",
-    'border-width' : "1px",
-    'border-top-style': "solid",
-    'border-top-width': "40px",
-    'border-top-color': "#E3027E",
+    padding: "0px",
     position : "absolute",
     left : "64px",
-    top : "582px",
+    top : "542px",
     width : "25%",
     height : "553px",
     'border-radius' : "16px",
@@ -31,45 +25,45 @@ const styles = {
     '-webkit-border-radius' : "16px",
   },
     backCard2:{
-    background : "#F2F2F2",
-    background : "rgba(255, 255, 255, 1)",
-    'border-style' : "Solid",
-    'border-color' : "#B7B7B7",
-    'border-color' : "rgba(183, 183, 183, 1)",
-    'border-width' : "1px",
-    'border-top-style': "solid",
-    'border-top-width': "40px",
-    'border-top-color': "#E3027E",
     position : "absolute",
     left : "35%",
-    top : "582px",
+    top : "542px",
     width : "30%",
     height : "573px",
     'border-radius' : "16px",
     '-moz-border-radius' : "16px",
     '-webkit-border-radius' : "16px",
+        padding: "0px",
+
   },
     backCard3:{
-    background : "#F2F2F2",
-    background : "rgba(255, 255, 255, 1)",
-    'border-style' : "Solid",
-    'border-color' : "#B7B7B7",
-    'border-color' : "rgba(183, 183, 183, 1)",
-    'border-width' : "1px",
-    'border-top-style': "solid",
-    'border-top-width': "40px",
-    'border-top-color': "#E3027E",
     position : "absolute",
     left : "70%",
-    top : "582px",
+    top : "542px",
     width : "25%",
     height : "543px",
     'border-radius' : "16px",
     '-moz-border-radius' : "16px",
     '-webkit-border-radius' : "16px",
+    padding: "0px",
+
   },
   cardImage:{
-    width: "100%"
+    width: "100%",
+    'border-radius' : "0px",
+    '-moz-border-radius' : "0px",
+    '-webkit-border-radius' : "0px",
+  },
+  cardHeader:{
+    'background-color' : "#E3027E",
+    'border-top-left-radius' : "16px",
+    '-moz-border-top-left-radius' : "16px",
+    '-webkit-border-top-left-radius' : "16px",
+    'border-top-right-radius' : "16px",
+    '-moz-border-top-right-radius' : "16px",
+    '-webkit-border-top-right-radius' : "16px",
+    'font-size': "20px",
+    'color': "white"
   }
 };
 
@@ -78,38 +72,41 @@ export default class TopBar extends PureComponent {
     return (
       <div>
         <Card style={styles.backCard1}>
+        <Card.Header style={styles.cardHeader}>Featured</Card.Header>
         <Card.Img variant="top" src={CardHouse} style={styles.cardImage} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Investing in the future</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            Are you about to make a big purchase? Or still saving to reach your dreams? With IHB Investors,
+            you can be sure your money won't lose value.
             </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Check it out!</Button>
           </Card.Body>
         </Card>
 
         <Card style={styles.backCard2}>
+         <Card.Header style={styles.cardHeader}>Good to know</Card.Header>
         <Card.Img variant="top" src={CardLaptop} style={styles.cardImage} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Safety guaranteerd</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            We take pride in our hard working employees. They are always following the latest updates on security, to make sure your data is safe!
             </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">More info</Button>
           </Card.Body>
         </Card>
 
         <Card style={styles.backCard3}>
+         <Card.Header style={styles.cardHeader}>Traveling soon?</Card.Header>
         <Card.Img variant="top" src={CardMoney} style={styles.cardImage} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>Creditcard fraud</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            We all know we should not forget to bring a toothbrush and underwear on holiday. 
+            We believe knowledge to prevent Creditcard fraud, should be added to this list.
+            Make sure you are prepared before you go!
             </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Stay safe on holiday</Button>
           </Card.Body>
         </Card>
 
