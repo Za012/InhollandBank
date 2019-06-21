@@ -69,9 +69,8 @@ class Login extends Component {
     }
 
     handleFormSubmit(e){
-        const cookies = new Cookies();
         e.preventDefault();
-        this.Auth.login(this.state.username,this.state.password)
+        this.Auth.login(this.state.username, this.state.password)
             .then(res =>{
               this.props.history.replace('/Employee/Search');
             })

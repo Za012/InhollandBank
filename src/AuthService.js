@@ -16,19 +16,34 @@ export default class AuthService {
     }
 
     login(username, password) {
-        // Get a token from api server using the fetch api
-        return this.fetch(`${this.domain}/Login?username=${username}&password=${password}`, {
-            method: 'POST'
-        }).then(res => {
-           var roles = this.setUserRoles();
-           this.setToken(res.token)// Setting the token in cookie
+        var details = {
+            'username': username,
+            'password': password
+        };
 
+        var formBody = [];
+        for (var property in details) {
+          var encodedKey = encodeURIComponent(property);
+          var encodedValue = encodeURIComponent(details[property]);
+          formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+        
+        var data ={
+            body: formBody,
+            method: 'post'
+        };
+        return this.fetch(`${this.domain}/Login`, data)
+        .then(res => {
+           this.setToken(res.token)// Setting the token in cookie
+           var roles = this.setUserRoles();
            return Promise.resolve(res, roles);
        })
     }
 
     setUserRoles(){
         var parent = this;
+
         this.fetch(`${this.domain}/me`)
         .then(function(response){
             parent.state.cookies.set('user', response, { path: '/' });
@@ -81,7 +96,7 @@ export default class AuthService {
         // performs api calls sending the required authentication headers
         const headers = {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         }
 
         // Setting Authorization header
