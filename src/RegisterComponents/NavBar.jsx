@@ -25,8 +25,8 @@ export default class TopBar extends PureComponent {
           <Nav.Link Active href="/Employee/Search">Search</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/Employee/RegisterAccount">
-          Register Account
+          <Nav.Link href="/Employee/CreateAccount">
+          Create Account
           </Nav.Link>
         </Nav.Item>
       </Nav>
