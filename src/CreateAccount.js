@@ -10,6 +10,7 @@ import MiddleBar from "./RegisterComponents/MiddleBar";
 import UserService from "./service/UsersService";
 import AccountService from "./service/AccountService";
 
+
 const styles = {
   Form:{
     background : "#FDE4F2",
@@ -100,7 +101,7 @@ class CreateAccount extends Component {
     const request = {
       type : 'current',
       countryCode: this.state.countryCode,
-      user : this.state.users[0].username,
+      user : this.state.user,
       name: this.state.name,
       bban: this.state.bban,
       bank: this.state.bank,
@@ -115,7 +116,7 @@ class CreateAccount extends Component {
 
   handleSavings(e){
 
-    this.state.type = 'savings';
+    this.setState({ type : "savings"});
     if(this.state.countryCode == null) this.state.countryCode = 'NL';
     if(this.state.user == null) this.state.user = this.state.users[0];
     if(this.state.name == null) this.state.name = "Account";
@@ -124,7 +125,7 @@ class CreateAccount extends Component {
     let request = {
       type : 'savings',
       countryCode: this.state.countryCode,
-      user : this.state.users[0].username,
+      user : this.state.user,
       name: this.state.name,
       bban: this.state.bban,
       bank: this.state.bank,
@@ -145,7 +146,7 @@ class CreateAccount extends Component {
           <MiddleBar/>
           <NavBar/>
 
-          <h2 style={styles.Title}>Create a new account</h2>
+          <h2 style={styles.Title}>Create a new current account</h2>
 
           <Form style={styles.Form} onSubmit={event => this.handleCurrent(event)} id="CurrentsForm">
           
@@ -210,7 +211,9 @@ class CreateAccount extends Component {
               </Button>
             </Form>
 
-          <Form style={styles.Form2} onSubmit={this.handleSavings} id="SavingsForm">
+            <h2 style={styles.Title}>Create a new savings account</h2>
+
+          <Form style={styles.Form2} onSubmit={event => this.handleSavings(event)} id="SavingsForm">
           
           <Form.Row>
             <Form.Group as={Col} controlId="formGridCountryCode">
@@ -236,7 +239,13 @@ class CreateAccount extends Component {
             <Form.Group as={Col} controlId="formGridUser">
               <Form.Label>User</Form.Label>
               <Form.Control as="select" required name="user" onChange={event => this.handleChange(event)}>
-                <option>bartS</option>
+                      {
+                        this.state.users.map(user  => {
+                          return(
+                            <option value={user.username}>{user.username}</option>
+                          )}
+                        )
+                      }
               </Form.Control>
             </Form.Group>
           </Form.Row>

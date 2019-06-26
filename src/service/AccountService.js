@@ -8,6 +8,18 @@ class AccountService {
         return axios.get(`https://localhost:8443/Employee/Accounts`);
     }
 
+    getUserAccounts(user) {
+        const cookies = new Cookies(); 
+        return axios.get(`https://localhost:8443/Customer/${user}/Accounts`, 	
+        	{  method: 'GET',
+			headers:{
+				"Authorization":"Bearer "+ cookies.get('token'),
+				'Accept' : 'application/json',
+				'Content-Type': 'application/json'
+			}
+		});
+    }
+
     createAccount(request){
         const cookies = new Cookies(); 
         fetch('https://localhost:8443/Employee/Accounts', {
