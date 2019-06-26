@@ -2,26 +2,31 @@
 import React from 'react';
 import Login from './Login';
 import Search from './Search';
+import RegisterUser from './RegisterUser';
+import CustomerStatistics from './CustomerStatistics';
+import Home from './Home';
 import Profile from './components/Profile';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CreateAccount from './CreateAccount';
 
 function App(){
   return(
     <Router>
       <div className="Login">
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/search" component={Search}/>
+          <Route path="/Login" component={Login} />
+          <Route path="/Employee/Search" component={Search}/>
+          <Route path="/Employee/RegisterUser"component={RegisterUser}/>
+          <Route path="/Employee/CreateAccount"component={CreateAccount}/>
+          <Route path="/Customer/Statistics" component={CustomerStatistics}/>
           <Route path="/profile" component={Profile}/>
+          <Route path="/" component={Home}/>
         </Switch>
       </div>
       </Router>
     )
-
-
 }
-  const Home = () => (
+  const yay = () => (
     <div>
       <h1>Home Page</h1>
     </div>

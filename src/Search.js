@@ -3,12 +3,60 @@ import './App.css'
 import axios from 'axios'
 import Cookies from 'universal-cookie';
 import ReactTable from 'react-table';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import TopBar from "./HomeComponents/TopBar";
+import NavBar from "./SearchComponents/NavBar";
+import SearchBar from "./SearchComponents/SearchBar";
+import MiddleBar from "./RegisterComponents/MiddleBar";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Table from 'react-bootstrap/Table';
+
+const styles = {
+  Form:{
+    background : "#FDE4F2",
+    'border-style' : "Solid",
+    'border-color' : "#F9CEE7",
+    'border-width' : "1px",
+    position : "absolute",
+    padding: "20px",
+    left : "15%",
+    top : "300px",
+    width : "70%",
+    'border-radius' : "8px",
+    '-moz-border-radius' : "8px",
+    '-webkit-border-radius' : "8px",
+  },
+    ResultGrid:{
+
+    position : "relative",
+    padding: "20px",
+    left : "15%",
+    top : "500px",
+    width : "70%",
+    'border-radius' : "8px",
+    '-moz-border-radius' : "8px",
+    '-webkit-border-radius' : "8px",
+  },
+  Title:{ 
+    position : "absolute",
+    left : "5%",
+    top : "210px",
+  	color: "#F90B6D", 
+  	'font-family': "Open Sans, sans-serif",
+  	'font-size': "34px", 
+  	'font-weight': "300",
+  	'line-height': "40px",
+  	margin:"0 0 16px"
+   }
+};
 
 class Search extends Component {
 	constructor () {
 		super()
 		this.state = {
-			query: null,
+			query: 'username',
 			value: null,
 			operator: ':',
 			data: []
@@ -31,7 +79,7 @@ class Search extends Component {
 		axios.get(url,
 		{
 			headers:{
-				"Authorization": cookies.get('token').token,
+				"Authorization":"Bearer "+ cookies.get('token'),
 				'Accept' : 'application/json',
 				'Content-Type': 'application/json'
 			}
@@ -44,49 +92,66 @@ class Search extends Component {
 		;
 	}
 
-
+  renderRow = () => {
+	return this.state.data.map(data  => {
+      return(<tr>
+        <td>{data.username}</td>
+        <td>{data.email}</td>
+        <td>{data.first_name}</td>
+        <td>{data.last_name}</td>
+        <td>{data.phone}</td>
+        <td>{data.roles}</td>
+      </tr>
+  		)}
+    );
+  }
 
 	render () {
-		const columns = [
-		{
-			Header: "Username",
-			accessor: "username"	
-		},
-		{
-			Header: "Email",
-			accessor: "email"	
-		},
-		{
-			Header: "First Name",
-			accessor: "first_name"	
-		},
-		{
-			Header: "Last Name",
-			accessor: "last_name"	
-		},
-		{
-			Header: "Phone",
-			accessor: "phone"	
-		}
-
-
-		]
     return (
-      <div className='search_container'>
-		  <h2>Search anything you want!</h2>
-		  <form id="search_window" className="search_form" name="search" onSubmit={this.handleClick}>
-		      <input type="text" id="query" title="query"  name="query" 
-		      onChange={event => this.handleChange(event)} placeholder="query" />
-		      <input type="text" id="value" title="value"  name="value" 
-		      onChange={event => this.handleChange(event)} placeholder="value" />
-		      <button type="submit" className="run" name="run">Search!</button>
-		  </form>
+	<div>
+	  <TopBar/>
+	  <MiddleBar/>
+	  <NavBar/>
+	  <h2 style={styles.Title}>Search</h2>
+      <Form style={styles.Form} onSubmit={this.handleClick}>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridQuery">
+            <Form.Label>Criteria</Form.Label>
+            <Form.Control as="select" name="query" onChange={event => this.handleChange(event)}>
+              <option name="username">Username</option>
+              <option name="email">Email</option>
+              <option name="roles">Role</option>
+              <option name="firstName">First name</option>
+              <option name="lastName">Last name</option>
+            </Form.Control>
+          </Form.Group>
 
-		  <ReactTable
-		  	columns ={columns}
-		  	data={this.state.data}
-		  >
-		  </ReactTable>
+          <Form.Group as={Col} controlId="formGridValue">
+            <Form.Label>Value</Form.Label>
+            <Form.Control type="text" name="value" placeholder="Enter search value" onChange={event => this.handleChange(event)} />
+          </Form.Group>
+        </Form.Row>
+
+        <Button variant="success" type="submit">
+          Search
+        </Button>
+      </Form>
+
+        <Table striped bordered hover style={styles.ResultGrid}>
+		  <thead>
+		    <tr>
+			    <th>Username</th>
+			    <th>Email</th>
+		      	<th>First Name</th>
+		      	<th>Last Name</th>
+		      	<th>Phone</th>
+		      	<th>Roles</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+	         {this.renderRow()}
+		  </tbody>
+		 </Table>
       </div>
       )
   }

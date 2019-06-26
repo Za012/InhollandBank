@@ -4,6 +4,9 @@ import axios from 'axios'
 import Cookies from 'universal-cookie';
 import AuthService from './AuthService';
 import { Link } from 'react-router-dom';
+import Tulip from './Resources/img/tulip.jpg';
+import TopBar from "./HomeComponents/TopBar";
+
 
 class Login extends Component {
     constructor(){
@@ -16,7 +19,7 @@ class Login extends Component {
     componentWillMount(){
     if(this.Auth.loggedIn()){
         if(this.Auth.state.cookies.get('user').roles.indexOf("ROLE_EMPLOYEE") > -1){
-          this.props.history.replace('/Employee');
+          this.props.history.replace('/Employee/Search');
         }
         else{
           this.props.history.replace('/Customer');
@@ -28,19 +31,20 @@ class Login extends Component {
     render() {
         return (
             <div className="center">
+              <TopBar/>
                 <div className="card">
                     <h1>Login</h1>
                     <form onSubmit={this.handleFormSubmit}>
                         <input
                             className="form-item"
-                            placeholder="Username goes here..."
+                            placeholder="Username"
                             name="username"
                             type="text"
                             onChange={this.handleChange}
                         />
                         <input
                             className="form-item"
-                            placeholder="Password goes here..."
+                            placeholder="Password"
                             name="password"
                             type="password"
                             onChange={this.handleChange}
@@ -66,10 +70,9 @@ class Login extends Component {
 
     handleFormSubmit(e){
         e.preventDefault();
-      
-        this.Auth.login(this.state.username,this.state.password)
+        this.Auth.login(this.state.username, this.state.password)
             .then(res =>{
-               this.props.history.replace('/');
+              this.props.history.replace('/Employee/Search');
             })
             .catch(err =>{
                 alert(err);
