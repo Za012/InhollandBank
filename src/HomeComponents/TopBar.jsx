@@ -104,7 +104,7 @@ export default class TopBar extends PureComponent {
       <div>
         <img src={Logo} style={styles.logo}/>
         <img src={LogoTitle} style={styles.LogoTitle}/>
-        {this.loggedIn()};
+        {this.loggedIn()}
       </div>
     );
   }

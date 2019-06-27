@@ -4,6 +4,26 @@ import TopBar from "./HomeComponents/TopBar";
 import PictureWheel from "./HomeComponents/PictureWheel";
 import Cards from "./HomeComponents/Cards";
 import _ from "lodash";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+
+
+const styles = {
+  jumbo:{
+    background : "#F2F2F2",
+    background : "rgba(255, 255, 255, 1)",
+    padding: "0px",
+    position : "absolute",
+    left : "64px",
+    top : "520px",
+    width : "25%",
+    height : "553px",
+    'border-radius' : "10px",
+    '-moz-border-radius' : "16px",
+    '-webkit-border-radius' : "16px",
+  }
+};
 
 class Home extends Component {
   constructor(props) {
@@ -53,10 +73,13 @@ class Home extends Component {
     <div className="Header">
 		<TopBar/>
 		<PictureWheel/>
+
+
+
 		<Cards/>
 	</div>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home

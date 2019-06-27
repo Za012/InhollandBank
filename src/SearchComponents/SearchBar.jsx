@@ -20,30 +20,25 @@ const styles = {
   },
 };
 
-export default class TopBar extends Component {
-  constructor() {
-    super();
-  } 
-
-  render() {
+function SearchBar(props){
     return (
       <div>
-      <Form style={styles.Form}>
+      <Form style={styles.Form} onSubmit={props.handleForm}>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridQuery">
             <Form.Label>Criteria</Form.Label>
-            <Form.Control as="select" name="query" onChange={event => this.handleChange(event)}>
-              <option value="username">Username</option>
-              <option value="email">Email</option>
-              <option value="roles">Role</option>
-              <option value="firstName">First name</option>
-              <option value="lastName">Last name</option>
+            <Form.Control as="select" name="query" onChange={event => props.handleChange(event)}>
+              <option name="username">Username</option>
+              <option name="email">Email</option>
+              <option name="roles">Role</option>
+              <option name="firstName">First name</option>
+              <option name="lastName">Last name</option>
             </Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridValue">
             <Form.Label>Value</Form.Label>
-            <Form.Control type="text" name="value" placeholder="Enter search value" onChange={event => this.handleChange(event)} />
+            <Form.Control type="text" name="value" placeholder="Enter search value" onChange={event => props.handleChange(event)} />
           </Form.Group>
         </Form.Row>
 
@@ -53,5 +48,4 @@ export default class TopBar extends Component {
       </Form>
       </div>
 );
-}
 }

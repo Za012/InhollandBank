@@ -7,9 +7,11 @@ const styles = {
   Nav:{
     position : "absolute",
     left : "0px",
-    top : "120px",
+    top : "100px",
     width : "100%",
     height : "6px",
+    'background-color': "#E3027E" 
+
   },
 };
 

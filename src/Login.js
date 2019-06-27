@@ -32,7 +32,7 @@ class Login extends Component {
         return (
             <div className="center">
               <TopBar/>
-                <div className="card">
+                <div className="bcard">
                     <h1>Login</h1>
                     <form onSubmit={this.handleFormSubmit}>
                         <input
