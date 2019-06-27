@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 import ReactTable from 'react-table';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TopBar from "./HomeComponents/TopBar";
-import NavBar from "./SearchComponents/NavBar";
+import NavBar from "./RegisterComponents/NavBar";
 import SearchBar from "./SearchComponents/SearchBar";
 import MiddleBar from "./RegisterComponents/MiddleBar";
 import Button from 'react-bootstrap/Button';

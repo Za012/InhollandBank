@@ -16,9 +16,9 @@ const styles = {
     'border-width' : "1px",
     position : "absolute",
     padding: "20px",
-    left : "15%",
-    top : "330px",
-    width : "70%",
+    left : "5%",
+    top : "200px",
+    width : "90%",
     'border-radius' : "8px",
     '-moz-border-radius' : "8px",
     '-webkit-border-radius' : "8px"
@@ -33,7 +33,10 @@ const styles = {
   	'font-weight': "300",
   	'line-height': "40px",
   	margin:"0 0 16px"
-   }
+   },
+    titlestyle:{
+    'padding-bottom' : "20px"
+  }
 };
 
 class RegisterUser extends Component {
@@ -84,8 +87,8 @@ class RegisterUser extends Component {
 	  <TopBar/>
 	  <MiddleBar/>
 	  <NavBar/>
-	  <h2 style={styles.Title}>Register a user</h2>
       <Form style={styles.Form} onSubmit={this.handleClick}>
+            <h3 style={styles.titlestyle}>Register a user</h3>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridRole">
             <Form.Label>Role</Form.Label>

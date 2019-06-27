@@ -7,9 +7,11 @@ const styles = {
   Nav:{
     position : "absolute",
     left : "0px",
-    top : "120px",
+    top : "100px",
     width : "100%",
     height : "6px",
+    'background-color': "#E3027E" 
+
   },
 };
 
@@ -27,6 +29,16 @@ export default class TopBar extends PureComponent {
         <Nav.Item>
           <Nav.Link href="/Employee/CreateAccount">
           Create Account
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/Customer/Overview">
+          Account Overview
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/Employee/AccountsSearch">
+          Account Search
           </Nav.Link>
         </Nav.Item>
       </Nav>

@@ -84,6 +84,8 @@ class CreateTransaction extends Component {
     e.preventDefault();
 
     this.TransactionService.createTranssactionFlow( JSON.stringify(this.state));
+
+    this.props.history.push(`/Customer/AccountsOverview`);
   }
 
 

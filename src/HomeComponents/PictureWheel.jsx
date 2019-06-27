@@ -13,12 +13,15 @@ const styles = {
     'padding-left' : "0px",
     'padding-top' : "5px",
     'padding-bottom' : "5px",
-    'margin-top' : "70px",
+    'margin-top' : "100px",
     width : "100%",
+    '-webkit-box-shadow':" 0px 10px 5px -7px rgba(168,166,168,1)",
+'-moz-box-shadow': "0px 10px 5px -7px rgba(168,166,168,1)",
+'box-shadow':" 0px 10px 5px -7px rgba(168,166,168,1)"
   },
   image:{
     width : "100%",
-    height: "400px",
+    height: "350px",
     overflow: "hidden",
     'object-fit': "cover"
   },

@@ -7,10 +7,11 @@ const styles = {
   Nav:{
     position : "absolute",
     left : "0px",
-    top : "120px",
+    top : "100px",
     width : "100%",
     height : "6px",
-    'color': "black"
+    'color': "black",
+    'background-color': "#E3027E" 
   },
 };
 
@@ -26,8 +27,8 @@ export default class TopBar extends PureComponent {
           <Nav.Link Active href="/Employee/Search">Search</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/Employee/RegisterAccount">
-          Register Account
+          <Nav.Link href="/Employee/CreateAccount">
+          Create Account
           </Nav.Link>
         </Nav.Item>
       </Nav>

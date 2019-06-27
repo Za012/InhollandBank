@@ -34,7 +34,7 @@ const styles = {
     position : "absolute",
     padding: "20px",
     left : "15%",
-    top : "700px",
+    top : "730px",
     width : "70%",
     'border-radius' : "8px",
     '-moz-border-radius' : "8px",
@@ -44,6 +44,18 @@ const styles = {
     position : "absolute",
     left : "5%",
     top : "220px",
+  	color: "#F90B6D", 
+  	'font-family': "Open Sans, sans-serif",
+  	'font-size': "34px", 
+  	'font-weight': "300",
+  	'line-height': "40px",
+  	margin:"0 0 16px"
+   },
+
+   Title2:{ 
+    position : "absolute",
+    left : "5%",
+    top : "700px",
   	color: "#F90B6D", 
   	'font-family': "Open Sans, sans-serif",
   	'font-size': "34px", 
@@ -112,6 +124,8 @@ class CreateAccount extends Component {
     e.preventDefault();
 
     this.AccountService.createAccount( JSON.stringify(request));
+
+    this.props.history.push(`/Employee/AccountsSearch`);
   }
 
   handleSavings(e){
@@ -136,7 +150,10 @@ class CreateAccount extends Component {
     e.preventDefault();
 
     this.AccountService.createAccount(JSON.stringify(request));
+
+    this.props.history.push(`/Employee/AccountsSearch`);
   }
+
   
   
 	render () {
@@ -211,7 +228,7 @@ class CreateAccount extends Component {
               </Button>
             </Form>
 
-            <h2 style={styles.Title}>Create a new savings account</h2>
+            <h2 style={styles.Title2}>Create a new savings account</h2>
 
           <Form style={styles.Form2} onSubmit={event => this.handleSavings(event)} id="SavingsForm">
           
