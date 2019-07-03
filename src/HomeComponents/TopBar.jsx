@@ -80,7 +80,7 @@ export default class TopBar extends PureComponent {
       } 
       else {        
         return(
-        <Button variant="secondary" href="/" style={styles.loggedButton}>Logout</Button>);
+        <Button variant="secondary" href="/Logout" style={styles.loggedButton}>Logout</Button>);
       }
   }
 

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Login from './Login';
+import Logout from './Logout';
 import Search from './Search';
 import RegisterUser from './RegisterUser';
 import CustomerStatistics from './CustomerStatistics';
@@ -11,7 +12,8 @@ import CreateAccount from './CreateAccount';
 import AccountOverview from './AccountOverview';
 import CreateTransaction from './CreateTransaction';
 import TransactionsOverview from './TransactionsOverview';
-import AccountsSearch from './AccountsSearch'
+import AccountsSearch from './AccountsSearch';
+import PrivateRoute from './components/PrivateRoute';
 
 function App(){
   return(
@@ -19,14 +21,15 @@ function App(){
       <div className="Login">
         <Switch>
           <Route path="/Login" component={Login} />
-          <Route path="/Employee/Search" component={Search}/>
-          <Route path="/Employee/AccountsSearch" component={AccountsSearch}/>
-          <Route path="/Employee/RegisterUser"component={RegisterUser}/>
-          <Route path="/Employee/CreateAccount"component={CreateAccount}/>
-          <Route path="/Customer/Statistics" component={CustomerStatistics}/>
-          <Route path="/Customer/Overview" component={AccountOverview}/>
-          <Route path="/Customer/CreateTransaction" component={CreateTransaction}/>
-          <Route path="/Customer/TransactionsOverview" component={TransactionsOverview}/>
+          <PrivateRoute path="/Employee/Search" component={Search}/>
+          <PrivateRoute path="/Employee/AccountsSearch" component={AccountsSearch}/>
+          <PrivateRoute path="/Employee/RegisterUser"component={RegisterUser}/>
+          <PrivateRoute path="/Employee/CreateAccount"component={CreateAccount}/>
+          <PrivateRoute path="/Customer/Statistics" component={CustomerStatistics}/>
+          <PrivateRoute path="/Customer/Overview" component={AccountOverview}/>
+          <PrivateRoute path="/Customer/CreateTransaction" component={CreateTransaction}/>
+          <PrivateRoute path="/Customer/TransactionsOverview" component={TransactionsOverview}/>
+          <PrivateRoute path="/Logout" component={Logout} />
           <Route path="/" component={Home}/>
         </Switch>
       </div>

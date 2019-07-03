@@ -2,8 +2,8 @@ import decode from 'jwt-decode';
 import Cookies from 'universal-cookie';
 
 export default class AuthService {
-
-    constructor(domain) {
+ 
+    constructor() {
         this.domain = 'https://inhollandbank.herokuapp.com' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
