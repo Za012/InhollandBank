@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 
 export default function withAuth(AuthComponent) {
-	const Auth = new AuthService('https://localhost:8443/Login');
+	const Auth = new AuthService('https://inhollandbank.herokuapp.com/Login');
 	return class AuthWrapped extends Component {
 		constructor() {
 			super();

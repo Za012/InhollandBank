@@ -63,7 +63,7 @@ class RegisterUser extends Component {
 	handleClick (e) {
 		this.state.dateCreated = new Date().toLocaleString()
 		var parent = this;
-		var url = 'https://localhost:8443/Employee/Users';
+		var url = 'https://inhollandbank.herokuapp.com/Employee/Users';
 		if(this.state.query != null && this.state.value != null){
 			url += this.state.query+this.state.operator+this.state.value;
 		}

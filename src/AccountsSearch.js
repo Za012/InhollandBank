@@ -71,7 +71,7 @@ class AccountsSearch extends Component {
 
 	handleClick (e) {
 		var parent = this;
-		var url = 'https://localhost:8443/Employee/Accounts?search=';
+		var url = 'https://inhollandbank.herokuapp.com/Employee/Accounts?search=';
 		if(this.state.query != null && this.state.value != null){
 			url += this.state.query+this.state.operator+this.state.value;
 		}
@@ -98,7 +98,7 @@ class AccountsSearch extends Component {
   
     const cookies = new Cookies(); 
     e.preventDefault();
-    fetch(`https://localhost:8443/Employee/Accounts/${idacc}`, {
+    fetch(`https://inhollandbank.herokuapp.com/Employee/Accounts/${idacc}`, {
       method: 'PUT',
       headers:{
           "Authorization": "Bearer "+cookies.get('token'),

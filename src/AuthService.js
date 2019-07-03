@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 export default class AuthService {
 
     constructor(domain) {
-        this.domain = 'https://localhost:8443' // API server domain
+        this.domain = 'https://inhollandbank.herokuapp.com' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)

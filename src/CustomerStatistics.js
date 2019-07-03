@@ -23,7 +23,7 @@ class CustomerStatistics extends Component {
 	handleClick (e) {
 		e.preventDefault();
 		var parent = this;
-		var url = `https://localhost:8443/Customer/Transactions?accountId=${this.state.accountId}`;
+		var url = `https://inhollandbank.herokuapp.com/Customer/Transactions?accountId=${this.state.accountId}`;
 		if(this.state.query != null && this.state.value != null){
 			url += this.state.query+this.state.operator+this.state.value;
 		}

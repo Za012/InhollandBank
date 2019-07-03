@@ -105,7 +105,7 @@ class Search extends Component {
 
 	handleForm (e) {
 		var parent = this;
-		var url = 'https://localhost:8443/Employee/Users?search=';
+		var url = 'https://inhollandbank.herokuapp.com/Employee/Users?search=';
 		if(this.state.query != null && this.state.value != null){
 			url += this.state.query+this.state.operator+this.state.value;
 		}

@@ -15,7 +15,7 @@ class Profile extends Component {
     
     componentDidMount() {
     	const cookies = new Cookies();
-    	axios.get(`https://localhost:8443/Employee/Accounts`,
+    	axios.get(`https://inhollandbank.herokuapp.com/Employee/Accounts`,
 		{
 			headers:{
 				"Authorization":"Bearer "+ cookies.get('token'),
